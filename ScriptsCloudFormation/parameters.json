@@ -1,0 +1,10 @@
+[
+  {
+    "ParameterKey": "ProjectName",
+    "ParameterValue": "TatakaiProject"
+  },
+  {
+    "ParameterKey": "Environment",
+    "ParameterValue": "Dev"
+  }
+]
