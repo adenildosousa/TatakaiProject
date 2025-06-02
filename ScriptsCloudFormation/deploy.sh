@@ -54,7 +54,10 @@ if [ $? -eq 0 ]; then
   echo "Stack Name: $STACK_NAME"
   echo "Região: $AWS_REGION"
 else
-  echo "Erro ao iniciar o deploy da stack. Verifique as mensagens de erro acima."
+  echo "Erro ao iniciar o deploy da stack. Verificando eventos de falha..."
+  aws cloudformation describe-stack-events --stack-name $STACK_NAME --region $AWS_REGION \
+    --query "StackEvents[?ResourceStatus=='CREATE_FAILED'].[LogicalResourceId,ResourceStatusReason]" \
+    --output table
   exit 1
 fi
 
