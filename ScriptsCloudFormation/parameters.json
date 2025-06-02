@@ -1,10 +1,10 @@
 [
   {
     "ParameterKey": "ProjectName",
-    "ParameterValue": "TatakaiProject"
+    "ParameterValue": "tatakai-project"
   },
   {
-    "ParameterKey": "environment",
+    "ParameterKey": "Environment",
     "ParameterValue": "dev"
   }
 ]
