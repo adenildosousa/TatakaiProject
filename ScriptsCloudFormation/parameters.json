@@ -4,7 +4,7 @@
     "ParameterValue": "TatakaiProject"
   },
   {
-    "ParameterKey": "Environment",
-    "ParameterValue": "Dev"
+    "ParameterKey": "environment",
+    "ParameterValue": "dev"
   }
 ]
