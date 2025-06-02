@@ -29,7 +29,7 @@ echo "Iniciando deploy da stack CloudFormation: $STACK_NAME na região $AWS_REGI
 aws cloudformation deploy \
   --template-file $TEMPLATE_FILE \
   --stack-name $STACK_NAME \
-  --parameter-overrides file://$PARAMS_FILE \
+  --parameter-overrides ProjectName=TatakaiProject Environment=Dev \
   --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
   --region $AWS_REGION
 
