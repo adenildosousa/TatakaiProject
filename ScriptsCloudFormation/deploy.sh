@@ -25,6 +25,21 @@ fi
 
 echo "Iniciando deploy da stack CloudFormation: $STACK_NAME na região $AWS_REGION..."
 
+# Verifica se a stack está em ROLLBACK_COMPLETE e a deleta automaticamente
+STACK_STATUS=$(aws cloudformation describe-stacks \
+  --stack-name $STACK_NAME \
+  --region $AWS_REGION \
+  --query "Stacks[0].StackStatus" \
+  --output text 2>/dev/null)
+
+if [ "$STACK_STATUS" == "ROLLBACK_COMPLETE" ]; then
+  echo "A stack $STACK_NAME está em estado ROLLBACK_COMPLETE. Excluindo antes de recriar..."
+  aws cloudformation delete-stack --stack-name $STACK_NAME --region $AWS_REGION
+  echo "Aguardando exclusão completa da stack..."
+  aws cloudformation wait stack-delete-complete --stack-name $STACK_NAME --region $AWS_REGION
+  echo "Stack excluída com sucesso. Continuando com o deploy..."
+fi
+
 # Comando de deploy
 aws cloudformation deploy \
   --template-file $TEMPLATE_FILE \
