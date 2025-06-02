@@ -56,7 +56,7 @@ Resources:
   FrontendBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub '${AWS::AccountId}-${projectname}-frontend-${environment}' # Nome precisa ser globalmente único e em minúsculas
+      BucketName: !Sub '${AWS::AccountId}-${ProjectName}-frontend-${Environment}' # Nome precisa ser globalmente único e em minúsculas
       AccessControl: PublicRead
       WebsiteConfiguration:
         IndexDocument: index.html
@@ -71,7 +71,7 @@ Resources:
   MediaBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub '${AWS::AccountId}-${projectname}-media-${environment}' # Nome precisa ser globalmente único e em minúsculas
+      BucketName: !Sub '${AWS::AccountId}-${ProjectName}-media-${Environment}' # Nome precisa ser globalmente único e em minúsculas
       CorsConfiguration:
         CorsRules:
           - AllowedHeaders:
